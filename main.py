@@ -4,9 +4,6 @@ from kivy.properties import *
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 
-class ButtonException(Exception):
-	pass
-
 
 class Calc(BoxLayout):
 	current_num = StringProperty('0')
@@ -20,7 +17,7 @@ class Calc(BoxLayout):
 								  '=': None})
 	def backspace_callback(self):
 		if self.last_pressed in self.operator_dict.keys():
-			raise ButtonException('Invalid Button combination')
+			return
 		if len(self.current_num) == 1:
 			self.current_num = 0
 		else:
